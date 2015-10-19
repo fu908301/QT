@@ -2,13 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #define LENGTH 1000
-const int co_index[10]={20,8,8,8,16,8,8,8,8,3};
+#define INDEX_LENGTH 10
+const int co_index[INDEX_LENGTH]={20,8,8,8,16,8,8,8,8,3};
 char line[LENGTH]={0};
 void output_data(FILE *output);
 void output_data(FILE *output)
 {
     int i,j,location=0;  
-    for(i=0;i<10;i++)
+    for(i=0;i<INDEX_LENGTH;i++)
     {
       for(j=0;j<co_index[i];j++)
       {
@@ -18,7 +19,7 @@ void output_data(FILE *output)
           fprintf(output,"%c",line[location]);
         location++;
       }
-      if(i<9)
+      if(i<INDEX_LENGTH-1)
         fprintf(output,",");
      }
     if(strlen(line)>location+3)
@@ -31,7 +32,7 @@ void output_data(FILE *output)
      {
        fprintf(output,"%c",line[i]);
        if(line[i+1]==' ')
-       fprintf(output,",");
+        fprintf(output,",");
       }     
     }
 }
